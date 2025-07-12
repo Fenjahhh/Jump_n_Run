@@ -275,6 +275,15 @@
       if (!gameActive && (e.key === 'r' || e.key === 'R')) resetGame();
     });
 
+    canvas.addEventListener('touchstart', function(e) {
+      if (gameActive) jump();
+      e.preventDefault();
+    }, { passive: false });
+    canvas.addEventListener('touchend', function(e) {
+    if (!gameActive) resetGame();
+    });
+
+
     // Start!
     resetGame();
   </script>
