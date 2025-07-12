@@ -73,7 +73,7 @@
     const cvBtn = document.getElementById('cv-btn');
     const msg = document.getElementById('message');
     let gameActive = true;
-
+    let cvUnlocked = false;
     // Spielfeld-Parameter
     const groundY = 200;
     let cactusSpeed = 5;
@@ -114,6 +114,11 @@
       gameActive = true;
       cvBtn.disabled = true;
       cvBtn.textContent = "Lebenslauf Downloaden";
+      if (!cvUnlocked) {
+        cvBtn.disabled = true;
+        cvBtn.textContent = "Lebenslauf Downloaden";
+      }
+      
       msg.style.display = "none";
       loop();
     }
@@ -143,11 +148,11 @@
       ctx.translate(x, y);
 
       // Kopf (weiß)
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = "#111";
       ctx.fillRect(16, 4, 16, 16);
 
       // Haare hinten (dunkelgrau, langer Zopf)
-      ctx.fillStyle = "#222";
+      ctx.fillStyle = "#fff";
       ctx.fillRect(28, 12, 7, 24);
 
       // Körper (schwarz)
@@ -260,6 +265,7 @@
       msg.style.display = "block";
       cvBtn.disabled = false;
       cvBtn.textContent = "Jetzt Lebenslauf downloaden!";
+      cvUnlocked = true;
     }
 
     function gameOver() {
