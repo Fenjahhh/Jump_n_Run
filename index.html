@@ -286,7 +286,9 @@
       e.preventDefault();
     }, { passive: false });
     canvas.addEventListener('touchend', function(e) {
-      if (!gameActive) resetGame();
+      if (!gameActive && e.target.id === 'game-canvas' && msg.style.display === "none") {
+        resetGame();
+      }
     });
 
 
